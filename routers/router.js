@@ -31,9 +31,9 @@ router.post("/", async (req, res, next) => {
 	}
 });
 
-router.delete("users/:id", (req, res, next) => {
+router.delete("/users/:id", (req, res, next) => {
 	db.remove(req.params.id)
-		.then(() => res.status(204).end())
+		.then((user) => res.status(204).end())
 		.catch((err) => next(err));
 });
 

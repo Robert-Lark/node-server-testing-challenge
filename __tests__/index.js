@@ -13,19 +13,27 @@ test("GET /", async () => {
 	expect(res.body.message).toBe("we did it!");
 });
 
-// test("POST /", async () => {
-// 	const res = await supertest(server).post("/").send({ username: "tommy" });
-// 	expect(res.statusCode).toBe(201);
-// 	expect(res.type).toBe("application/json");
-// 	expect(res.body.username).toBe("tommy");
-// 	expect(res.body.id).toBeDefined();
-// });
+test("POST /", async () => {
+	const res = await supertest(server).post("/").send({ username: "tomsonsy3" });
+	expect(res.statusCode).toBe(201);
+	expect(res.type).toBe("application/json");
+	expect(res.body.username).toBe("tomsonsy3");
+	expect(res.body.id).toBeDefined();
+});
+
+test("POST /", async () => {
+	const res = await supertest(server).post("/").send({ username: "tommy" });
+	expect(res.statusCode).toBe(500);
+});
 
 test("DELETE /users/:id", async () => {
-	const res = await supertest(server).delete("users/4");
+	const res = await supertest(server).delete("/users/1");
 	expect(res.statusCode).toBe(204);
-	// expect(res.type).toBe("application/json");
-	// expect(res.body.message).toBe("The user has been deleted");
+});
+
+test("DELETE /users/:id", async () => {
+	const res = await supertest(server).delete("/users/");
+	expect(res.statusCode).toBe(404);
 });
 
 test("a placeholder test", () => {
